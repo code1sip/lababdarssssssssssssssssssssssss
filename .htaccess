@@ -1,0 +1,35 @@
+# Hostinger PHP Configuration
+<IfModule mod_php7.c>
+    php_flag display_errors On
+    php_value error_reporting 32767
+</IfModule>
+<IfModule mod_php.c>
+    php_flag display_errors On
+    php_value error_reporting 32767
+</IfModule>
+
+# Security - Disable directory browsing
+Options -Indexes
+
+# Custom Error Pages (Optional)
+# ErrorDocument 500 /error.php
+
+# Allow large file uploads
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+<IfModule mod_php.c>
+    php_value upload_max_filesize 64M
+    php_value post_max_size 64M
+    php_value max_execution_time 300
+    php_value max_input_time 300
+</IfModule>
+
+# URL Rewriting (Optional, for clean URLs)
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^product/([a-zA-Z0-9-]+)$ product.php?id=$1 [L,QSA]
